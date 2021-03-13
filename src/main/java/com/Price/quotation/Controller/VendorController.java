@@ -1,21 +1,15 @@
 package com.Price.quotation.Controller;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.Price.quotation.Model.User;
 import com.Price.quotation.Model.Vendor;
 import com.Price.quotation.Service.VendorService;
 
@@ -73,4 +67,15 @@ public class VendorController {
 	public String vendorLogout(@ModelAttribute("vendor") Vendor vendor) {
 		return "vendorLogIn";
 	}
+    @RequestMapping("/vendorList")    
+    public String vendorList(ModelMap m){    
+        List<Vendor> list=vendorService.read();    
+        m.addAttribute("list",list);  
+        return "vendorList";    
+    }    
+    @RequestMapping(value="/deleteVendor/{vId}",method = RequestMethod.GET)    
+    public String delete(@PathVariable int vId){    
+        vendorService.delete(vId);    
+        return "redirect:/vendorList";    
+    }     
 }

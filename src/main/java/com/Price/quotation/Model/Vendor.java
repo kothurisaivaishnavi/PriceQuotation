@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Vendor {
+	private int vId;
     private String firstName;
     private String lastName;
     private String Gender;
@@ -14,6 +15,15 @@ public class Vendor {
 	public Vendor() {
 		super();
 	}
+	
+	public int getvId() {
+		return vId;
+	}
+
+	public void setvId(int vId) {
+		this.vId = vId;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}

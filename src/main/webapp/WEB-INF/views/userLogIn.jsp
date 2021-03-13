@@ -7,16 +7,50 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+<body>
+<div class="jumbotron" style="background-color: bisque;">
+    <center>  <h1>Cognizant E-commerce</h1>
+      <small>A place for your daily needs</small> </center>
+      <form:form method="get" action="/index">
+      <button type="submit" class="btn btn-info">Home</button>
+      </form:form>
+    </div>	
 
-<body style="background-color: lavender">
-<h1>
-		<center>User Sign In</center>
-	</h1>
- 
-<center>
+<div class="container mt-5" >
+<div class="row">
+<div class="col-md-4 mt-5">
+
+<img alt="logo"  src='/images/user.png'/ style="position: absolute; padding-top: 30%">
+</div>
+<div class="col-md-8">
+<h1 style="text-align: center;">USER LOGIN</h1>
 	<form:form method="post" action="/userSuccessLogin"	modelAttribute="user">
- 		${error} 
-		<table>
+ 	<h5 style="text-align:center; font-family: cursive; color: red;">	${error }  </h5>
+ 	
+ 	<div class="form-group mt-3">
+			<label>User Id :</label>
+			<form:input path="userId" class="form-control" name="userId" size="150" />
+			</div>
+ 	
+ 	<div class="form-group">
+			<label>Password :</label>
+			<form:password path="password" class="form-control"  name="password" />
+			<form:errors path="password" cssClass="error"/>
+			</div>
+			
+			<div class="container mt-5" style="text-align: center;">
+                        <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-success">Login</button>
+                            </div>
+                            </div>
+                            </div>
+ 	
+	<!-- <table>
  			
 			<tr>
 				<td id="id1"><label>User Id</label></td>
@@ -38,9 +72,11 @@
 				
 			</tr>
   
-		</table>
+		</table> -->	
 	</form:form><br>
-	 <a href = "/index">Home</a>
-	</center>
+	 
+	</div>
+	</div>
+	</div>
 </body>
 </html>

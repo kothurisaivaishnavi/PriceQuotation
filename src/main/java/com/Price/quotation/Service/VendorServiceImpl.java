@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.Price.quotation.Model.Vendor;
@@ -53,5 +52,11 @@ public class VendorServiceImpl implements VendorService {
             }
         });
         return vendorList;
-    }      
+    }     
+
+    public int delete(int vId){    
+        String sql="delete from vendor_table where vId="+vId+"";    
+        return jdbcTemplate.update(sql);    
+    }    
+    
 }

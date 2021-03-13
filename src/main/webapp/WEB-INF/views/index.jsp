@@ -9,7 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Title</title>
+    <title>Cognizant E-commerce</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,6 +30,7 @@
         </div>
         <div class="col-sm-3">
           <div class="card" style="width:200px; height: 200px;">
+          <img class="card-img-top" src="/images/user.png" alt="Card image">
             <div class="card-body">
             <center><h4 class="card-title">USER</h4></center>
             <br> 
@@ -44,6 +45,7 @@
         </div>
         <div class="col-sm-3">
           <div class="card" style="width:200px; height: 200px;">
+          <img class="card-img-top" src="/images/vendor.jpg" alt="Card image">
               <div class="card-body">
               <center><h4 class="card-title">VENDOR</h4></center>
               <br>
@@ -63,6 +65,7 @@
           </div>
           <div class="col-sm-3">
             <div class="card" style="width:200px; height: 200px;">
+            <img class="card-img-top" src="/images/admin.jpg" alt="Card image">
               <div class="card-body">
               <center><h4 class="card-title">ADMIN</h4></center>
               <br> 
@@ -79,6 +82,7 @@
           </div>
           <div class="col-sm-3">
             <div class="card" style="width:200px; height: 200px;">
+            <img class="card-img-top" src="/images/vendor.jpg" alt="Card image">
                 <div class="card-body">
                 <center><h4 class="card-title">VENDOR</h4></center>
                 <br>
@@ -93,6 +97,7 @@
           </div>
           <div class="col-sm-3">
             <div class="card" style="width:200px; height: 200px;">
+            <img class="card-img-top" src="/images/user.png" alt="Card image">
                 <div class="card-body">
                 <center><h4 class="card-title">USER</h4></center>
                 <br>

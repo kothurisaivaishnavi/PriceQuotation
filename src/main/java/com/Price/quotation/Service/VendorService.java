@@ -11,4 +11,7 @@ public interface VendorService {
     
     //this method is used to fetch Vendor data from Database(Price Quotation)
     public List<Vendor> read();
+	public int delete(int vId);
+
+    
 }

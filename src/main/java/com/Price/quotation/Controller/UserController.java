@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.Price.quotation.Model.Admin;
 import com.Price.quotation.Model.User;
 import com.Price.quotation.Service.UserService;
 

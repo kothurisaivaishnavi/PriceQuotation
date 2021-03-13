@@ -8,7 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.Price.quotation.Model.Admin;
 import com.Price.quotation.Service.AdminService;
@@ -59,4 +59,9 @@ public class AdminController {
 	public String index(@ModelAttribute("admin") Admin adminSignIn) {
 		return "index";
 	}
+	@RequestMapping(value = "/vendorList", method = RequestMethod.GET)
+	public String viewVendor(@ModelAttribute("admin") Admin adminSignIn) {
+		return "vendorList";
+	}
+	        
 }
