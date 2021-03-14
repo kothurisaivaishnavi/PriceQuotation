@@ -4,12 +4,17 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.Price.quotation.Model.Admin;
+import com.Price.quotation.Model.Product;
 import com.Price.quotation.Model.User;
 import com.Price.quotation.Service.UserService;
 
@@ -65,9 +70,30 @@ public class UserController {
 	    return "userLogIn";
        
     }
+    @RequestMapping("/userSuccessLogin")    
+    public String viewproduct(Model m){    
+        List<User> list=userService.getUser();    
+        m.addAttribute("list",list);  
+        return "userSuccesslogin";    
+    }   
     @RequestMapping(value = "/userLogOut", method = RequestMethod.GET)
 	public String userLogout(@ModelAttribute("user") User user) {
 		return "userLogIn";
 	}
-    
+    @RequestMapping(value = "/viewUser", method = RequestMethod.GET)
+	public String viewUser(@ModelAttribute("user") User user) {
+		return "viewUser";
+	}
+    @RequestMapping(value="/editProfile/{id}")    
+    public String edit(@PathVariable int id, Model m){    
+        User profile=userService.getUserById(id);    
+        m.addAttribute("command",profile);  
+        return "userEditForm";    
+    }    
+    /* It updates model object. */    
+    @RequestMapping(value="/usereditsave",method = RequestMethod.POST)    
+    public String editsave(@ModelAttribute("profile") User user){    
+        userService.update(user);    
+        return "userSuccessLogin";    
+    } 
 }

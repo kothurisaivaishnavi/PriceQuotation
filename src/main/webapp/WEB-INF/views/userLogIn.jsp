@@ -23,7 +23,7 @@
 <div class="row">
 <div class="col-md-4 mt-5">
 
-<img alt="logo"  src='/images/user.png'/ style="position: absolute; padding-top: 30%">
+<img alt="logo"  src='/images/user.png' style="position: absolute; padding-top: 30%">
 </div>
 <div class="col-md-8">
 <h1 style="text-align: center;">USER LOGIN</h1>

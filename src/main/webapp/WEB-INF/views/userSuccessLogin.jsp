@@ -4,7 +4,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page import="java.sql.*,java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,12 +13,15 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <body>
 
 <div class="jumbotron" style="background-color: bisque;">
-    <center>  <h1>Cognizant E-commerce</h1>
+<a href="/viewUser" >
+<img alt="logo"  src='/images/user_profile.png' style="float: right; border-radius:50%" width="50" height="50" ></a>
+    <center><h1>Cognizant E-commerce</h1>
       <small>A place for your daily needs</small> </center>
       
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-info">Home</button>
       </form:form>
+     
       <form:form action="/userLogOut" method="get">
       <button type="submit" class="btn btn-info" style="float: right;">Logout</button>
       </form:form>
@@ -37,7 +40,14 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 	</h3>
  <form:form action="/userLogOut" method="get">
       <button type="submit" class="btn btn-info" >Logout</button>
-      </form:form>
+ </form:form>
+ <div class="container mt-5">
+    <input type="text" name="box" placeholder="Search........................">
+    <div class="btn">
+        <a href="/viewproduct"><i class="fa fa-search"></i></a>
+    </div>
+</div>
+
 	<!-- <a href="/searchVendor">search Vendor</a>
  <br><br>
  <a href="/viewOrders">View Orders</a>

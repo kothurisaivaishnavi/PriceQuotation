@@ -28,39 +28,49 @@
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-info">Home</button>
       </form:form>
-      <form:form action="/vendorLogOut" method="get">
+      <form:form action="/logOut" method="get">
       <button type="submit" class="btn btn-info" style="float: right;">Logout</button>
       </form:form>
     </div>	
    <div class="container mt-5" >
 <div class="row">
-<div class="col-md-4 mt-5">
+<div class="col-md-3 mt-5">
 
-<img alt="logo"  src='/images/vendor.jpg'/ style="position: absolute; padding-top: 30%">
+<img alt="logo"  src='/images/user.png' style="position: absolute; padding-top: 30%" >
 </div>
 <div class="col-md-8">
- <center>
-<h1>Products List</h1></center>
+	<%
+	Class.forName("com.mysql.jdbc.Driver");
+	System.out.println("Driver Class Loaded!!!");
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","October@1998");
+	System.out.println("Connection Established!!!");
+	 %>
+	<center><h1>Profile</h1></center>
 <table border="2" width="70%" cellpadding="2">
-<tr><th>ProductId</th><th>ProductName</th><th>Category</th><th>Description</th><th>Availability</th><th>Color</th><th>Quantity</th><th>Price</th><th>Edit</th><th>Delete</th></tr>
-   <c:forEach var="product" items="${list}">  
-   <tr>
-   <td>${product.id}</td>
-   <td>${product.productName}</td>
-   <td>${product.type}</td>
-   <td>${product.description}</td>
-   <td>${product.availability}</td>
-   <td>${product.color}</td>
-   <td>${product.quantity}</td>
-   <td>${product.price}</td>
-   <td><a href="editProduct/${product.id}" class="btn btn-info" >Edit</a></td>
-   <td><a href="deleteproduct/${product.id}" class="btn btn-danger" >Delete</a></td>
-   </tr>
-   </c:forEach>
-   </table>
-   <br/>
-   <div class="col-sm-3">
-  	<form:form method="post" action="/productForm">
-    <button type="submit" class="btn btn-success" style="float: center;">Add Product</button>
-    </form:form></div>
-    <!-- productName,type,description,availability,color,quantity,price --></div></div></div></body></html>
+<tr><th>FirstName</th><th>LastName</th><th>DateOfBirth</th><th>Gender</th><th>ContactNumber</th><th>UserId</th><th>Password</th><th>Address</th><th>Id</th><th>Edit</th></tr>
+  <%
+	ResultSet rs = con.createStatement().executeQuery("select * from user_table");
+	while(rs.next())
+	{
+	%>
+	    <td><%=rs.getString(1)%></td>
+		<td><%=rs.getString(2)%></td>
+		<td><%=rs.getString(3)%></td>
+		<td><%=rs.getString(4)%></td>
+		<td><%=rs.getString(5)%></td>
+		<td><%=rs.getString(6) %></td>
+		<td><%=rs.getString(7) %></td>
+		<td><%=rs.getString(8) %></td>
+		<td><%=rs.getString(9) %></td>
+		<td><a href="editProfile/<%=rs.getString(9) %>" class="btn btn-info btn-lg" >
+		<span class="glyphicon glyphicon-pencil"></span>Edit</a></td>  
+		</tr>
+	<%
+	}
+	%> 
+		      
+   </table>  </center>
+</div></div></div>
+   <br/>  
+</body>
+</html>

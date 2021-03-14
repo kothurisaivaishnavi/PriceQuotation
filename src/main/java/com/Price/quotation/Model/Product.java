@@ -1,8 +1,7 @@
 package com.Price.quotation.Model;
 
 public class Product {
-    
-    private int vId;
+    private int id;
     private String productName;
     private String type;
     private String description;
@@ -11,11 +10,12 @@ public class Product {
     private int quantity;
     private int price;
        
-    public int getvId() {
-        return vId;
+    public int getId() {
+        return id;
     }
-    public void setvId(int vId) {
-        this.vId = vId;
+    
+	public void setId(int id) {
+        this.id = id;
     }
     public String getProductName() {
         return productName;

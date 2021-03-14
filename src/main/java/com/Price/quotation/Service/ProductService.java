@@ -37,23 +37,22 @@ public class ProductService {
 	    }
 	}    
 	public int update(Product p){    
-	    String sql="update product_table set productName='"+p.getProductName()+"',type='"+p.getType()+"',description='"+p.getDescription()+"',availability='"+p.getAvailability()+"',color='"+p.getColor()+"',quantity='"+p.getQuantity()+"',price='"+p.getPrice()+"' where vId="+p.getvId()+""; 
+	    String sql="update product_table set productName='"+p.getProductName()+"',type='"+p.getType()+"',description='"+p.getDescription()+"',availability='"+p.getAvailability()+"',color='"+p.getColor()+"',quantity='"+p.getQuantity()+"',price='"+p.getPrice()+"' where id="+p.getId()+""; 
 	    return jdbcTemplate.update(sql);    
 	}    
-	public int delete(int vId){    
-	    String sql="delete from product_table where vId="+vId+"";    
+	public int delete(int id){    
+	    String sql="delete from product_table where id="+id+"";    
 	    return jdbcTemplate.update(sql);    
 	}    
-	public Product getProductById(int vId){    
-	    String sql="select * from product_table where vId=?";    
-	    return jdbcTemplate.queryForObject(sql, new Object[]{vId},new BeanPropertyRowMapper<Product>(Product.class));    
+	public Product getProductById(int id){    
+	    String sql="select * from product_table where id=?";    
+	    return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Product>(Product.class));    
 	}    
 	public List<Product> getProduct(){    
 	    return jdbcTemplate.query("select * from product_table",new RowMapper<Product>(){    
 	        public Product mapRow(ResultSet rs, int row) throws SQLException {    
 	            Product pro=new Product(); 
-	            pro.setvId(rs.getInt(1));
-	           // System.out.println(pro.getvId());
+	            pro.setId(rs.getInt(1));
 	            pro.setProductName(rs.getString(2));    
 	            pro.setType(rs.getString(3));    
 	            pro.setDescription(rs.getString(4));    

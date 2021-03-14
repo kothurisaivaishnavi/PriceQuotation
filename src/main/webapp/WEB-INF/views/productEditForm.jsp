@@ -70,7 +70,7 @@ function validateForm() {
         <center><h1>Edit product details</h1></center>
        <form:form method="POST" action="/editsave" name="product_form" onsubmit="return validateForm()" >   
         <div class="form-group">  
-         <form:hidden  path="vId" /></div>
+         <form:hidden  path="id" /></div>
          <div class="form-group"> 
           <label>Product Name<b style="color:red">*</b>: </label>
           <form:input path="productName" class="form-control" size="150" /></div>

@@ -110,11 +110,12 @@ function userValidateForm() {
 	<img alt="logo"  src='/images/user.png' style="position: absolute; padding-top: 40%">
 	</div>
 	<div class="col-md-8">
-	<h1 style="text-align: center;">USER REGISTRATION</h1>
+	<h1 style="text-align: center;">Edit Profile</h1>
 
-	<form:form name="user_form" method="post" onsubmit="return userValidateForm()" action="/userRegister" modelAttribute="user"> 
+	<form:form name="user_form" method="post" onsubmit="return userValidateForm()" action="/usereditsave" > 
  
-		<h5 style="text-align:center; font-family: cursive; color: red;">	${status }  </h5>
+			<div class="form-group">  
+         <form:hidden  path="id" /></div>
 			<div class="form-group mt-3">
 			<label>First Name<b style="color:red">*</b>:</label>
 			<form:input name="firstName" class="form-control" path="firstName" size="150" title="Name should be in range 4-50" />
@@ -175,16 +176,9 @@ function userValidateForm() {
                  <div class="row">
                      <div class="col-sm-4"></div>
                      <div class="col-sm-2">
-                         <button type="submit" class="btn btn-success">Register</button>
-                     </div>
-                     <div class="col-sm-2">
-                         <button class="btn btn-info" type="reset">Reset</button>
-                     </div>
-                     <div class="col-sm-2">
-                    <div class="container text-center">
-                  <a href="/userLogin" class="btn btn-success">LOGIN</a>
-                </div>
-                </div>
+                         <button type="submit" class="btn btn-success">Edit Save</button>
+                    
+                    
                  </div>
                        
              </div>

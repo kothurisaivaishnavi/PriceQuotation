@@ -13,6 +13,7 @@
   <script>
  
 function validateForm() {
+
   var pname = document.forms["product_form"]["productName"].value;
   if (pname == "") {
     alert("Product name must be filled out");
@@ -70,6 +71,7 @@ function validateForm() {
     
      <form name="product_form" onsubmit="return validateForm()" method="post" action="/save" modelAttribute="product" >
         <h5 style="text-align:center; font-family: cursive; color: red;">    ${vStatus }  </h5>  
+        
         <div class="form-group">       
           <label>Product Name<b style="color:red">*</b>: </label>  
           <input name="productName" path="productName" class="form-control" size="150" />

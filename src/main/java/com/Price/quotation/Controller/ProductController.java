@@ -59,9 +59,9 @@ public class ProductController {
     }    
     /* It displays object data into form for the given id.   
      * The @PathVariable puts URL data into variable.*/    
-    @RequestMapping(value="/editProduct/{vId}")    
-    public String edit(@PathVariable int vId, Model m){    
-        Product pro=productService.getProductById(vId);    
+    @RequestMapping(value="/editProduct/{id}")    
+    public String edit(@PathVariable int id, Model m){    
+        Product pro=productService.getProductById(id);    
         m.addAttribute("command",pro);  
         return "productEditForm";    
     }    
@@ -72,9 +72,9 @@ public class ProductController {
         return "redirect:/viewproduct";    
     }    
     /* It deletes record for the given id in URL and redirects to /viewemp */    
-    @RequestMapping(value="/deleteproduct/{vId}",method = RequestMethod.GET)    
-    public String delete(@PathVariable int vId){    
-        productService.delete(vId);    
+    @RequestMapping(value="/deleteproduct/{id}",method = RequestMethod.GET)    
+    public String delete(@PathVariable int id){    
+        productService.delete(id);    
         return "redirect:/viewproduct";    
     }     
 }
