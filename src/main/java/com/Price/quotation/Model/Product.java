@@ -9,7 +9,8 @@ public class Product {
     private String color;
     private int quantity;
     private int price;
-       
+    private String status;
+    
     public int getId() {
         return id;
     }
@@ -59,5 +60,13 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
     
 }

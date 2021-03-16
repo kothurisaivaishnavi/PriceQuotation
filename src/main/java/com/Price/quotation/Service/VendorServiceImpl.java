@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
+import com.Price.quotation.Model.User;
 import com.Price.quotation.Model.Vendor;
 
 
@@ -58,5 +59,4 @@ public class VendorServiceImpl implements VendorService {
         String sql="delete from vendor_table where vId="+vId+"";    
         return jdbcTemplate.update(sql);    
     }    
-    
 }

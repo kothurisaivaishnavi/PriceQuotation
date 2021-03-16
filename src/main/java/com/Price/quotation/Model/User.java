@@ -12,6 +12,9 @@ public class User {
     private String userId;
     private String password;
     private String address;
+    private String priceQuotation;
+    private String requestId;
+    private int productId;
 	public User() {
 		super();
 	}
@@ -72,6 +75,31 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	public String getPriceQuotation() {
+		return priceQuotation;
+	}
+
+	public void setPriceQuotation(String priceQuotation) {
+		this.priceQuotation = priceQuotation;
+	}
+	
+	public String getRequestId() {
+		return requestId;
+	}
+
+	public void setRequestId(String requestId) {
+		this.requestId = requestId;
+	}
+	
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
 	@Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender

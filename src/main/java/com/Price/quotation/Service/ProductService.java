@@ -37,7 +37,7 @@ public class ProductService {
 	    }
 	}    
 	public int update(Product p){    
-	    String sql="update product_table set productName='"+p.getProductName()+"',type='"+p.getType()+"',description='"+p.getDescription()+"',availability='"+p.getAvailability()+"',color='"+p.getColor()+"',quantity='"+p.getQuantity()+"',price='"+p.getPrice()+"' where id="+p.getId()+""; 
+	    String sql="update product_table set productName='"+p.getProductName()+"',type='"+p.getType()+"',description='"+p.getDescription()+"',availability='"+p.getAvailability()+"',color='"+p.getColor()+"',quantity='"+p.getQuantity()+"',price='"+p.getPrice()+"',status='"+p.getStatus()+"' where id="+p.getId()+""; 
 	    return jdbcTemplate.update(sql);    
 	}    
 	public int delete(int id){    
@@ -60,6 +60,7 @@ public class ProductService {
 	            pro.setColor(rs.getString(6));
 	            pro.setQuantity(rs.getInt(7));
 	            pro.setPrice(rs.getInt(8));
+	            pro.setStatus(rs.getString(9));
 	            return pro;    
 	        }    
 	    });    

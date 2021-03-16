@@ -62,8 +62,7 @@
 		<td><%=rs.getString(7) %></td>
 		<td><%=rs.getString(8) %></td>
 		<td><%=rs.getString(9) %></td>
-		<td><a href="editProfile/<%=rs.getString(9) %>" class="btn btn-info btn-lg" >
-		<span class="glyphicon glyphicon-pencil"></span>Edit</a></td>  
+		<td><a href="editProfile/<%=rs.getString(9) %>" class="btn btn-light" >Edit</a></td>  
 		</tr>
 	<%
 	}

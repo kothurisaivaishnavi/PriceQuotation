@@ -34,7 +34,7 @@
     </div>	
    <div class="container mt-5" >
 <div class="row">
-<div class="col-md-4 mt-5">
+<div class="col-md-3 mt-5">
 
 <img alt="logo"  src='/images/vendor.jpg'/ style="position: absolute; padding-top: 30%">
 </div>

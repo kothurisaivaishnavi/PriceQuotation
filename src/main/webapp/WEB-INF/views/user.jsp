@@ -94,12 +94,13 @@ function userValidateForm() {
 }
 </script>
 </head>
-<body>
-<div class="jumbotron" style="background-color: bisque;">
+<body style="background-color: activeborder;">
+<div class="jumbotron" style="background-color: aqua;">
     <center>  <h1>Cognizant E-commerce</h1>
-      <small>A place for your daily needs</small> </center>
+      <small>A place for your daily needs</small> 
+       <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
       <form:form method="get" action="/index">
-      <button type="submit" class="btn btn-info">Home</button>
+      <button type="submit" class="btn btn-dark">Home</button>
       </form:form>
     </div>	
 

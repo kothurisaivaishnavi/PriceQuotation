@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.Price.quotation.Model.Admin;
 import com.Price.quotation.Model.Product;
 import com.Price.quotation.Model.User;
+import com.Price.quotation.Service.ProductService;
 import com.Price.quotation.Service.UserService;
 
 @Controller
@@ -25,7 +26,9 @@ public class UserController {
     @Autowired
     private UserService userService;
     
-       
+    @Autowired
+    ProductService productservice;
+    
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String UserFront(@ModelAttribute("user") User userView) {
         return "user";
@@ -71,7 +74,7 @@ public class UserController {
        
     }
     @RequestMapping("/userSuccessLogin")    
-    public String viewproduct(Model m){    
+    public String viewUser(Model m){    
         List<User> list=userService.getUser();    
         m.addAttribute("list",list);  
         return "userSuccesslogin";    
@@ -96,4 +99,10 @@ public class UserController {
         userService.update(user);    
         return "userSuccessLogin";    
     } 
+    @RequestMapping("/userProductView")    
+    public String viewproduct(Model m){    
+        List<Product> list=productservice.getProduct();    
+        m.addAttribute("list",list);  
+        return "userProductView";    
+    }  
 }

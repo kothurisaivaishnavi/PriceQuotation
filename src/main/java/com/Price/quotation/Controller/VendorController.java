@@ -3,6 +3,7 @@ package com.Price.quotation.Controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,7 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.Price.quotation.Model.Product;
+import com.Price.quotation.Model.User;
 import com.Price.quotation.Model.Vendor;
+import com.Price.quotation.Service.ProductService;
+import com.Price.quotation.Service.RequestService;
 import com.Price.quotation.Service.VendorService;
 
 @Controller
@@ -18,7 +24,10 @@ import com.Price.quotation.Service.VendorService;
 public class VendorController {
 	@Autowired
 	private VendorService vendorService;
-
+	@Autowired
+	ProductService productService;
+	@Autowired
+	RequestService requestService;
 	@RequestMapping(value = "/vendor", method = RequestMethod.GET)
 	public String VendorFront(@ModelAttribute("vendor") Vendor vendorView) {
 		return "vendor";
@@ -77,5 +86,55 @@ public class VendorController {
     public String delete(@PathVariable int vId){    
         vendorService.delete(vId);    
         return "redirect:/vendorList";    
-    }     
+    }    
+
+    @RequestMapping(value="/editRequest/{id}")    
+    public String edit(@PathVariable int id, Model m){    
+        Product pro=productService.getProductById(id);    
+        m.addAttribute("command",pro);  
+        return "requestEditForm";    
+    }    
+    /* It updates model object. */    
+    @RequestMapping(value="/requesteditsave",method = RequestMethod.POST)    
+    public String editsave(@ModelAttribute("product") Product product, Model m){    
+        productService.update(product);
+        List<Product> list=productService.getProduct();    
+        m.addAttribute("list",list);
+        return "vendorRequestHandler";    
+    }    
+    
+    @RequestMapping(value="/vendorRequestHandler",method = RequestMethod.GET)
+    public String viewRequestHandler(Model m) {
+    	  List<Product> list=productService.getProduct();    
+          m.addAttribute("list",list);  
+          List<User> reqlist=requestService.viewRequest();
+          m.addAttribute("reqlist",reqlist);
+    	return "vendorRequestHandler";
+    }
+
+	/*
+	 * @RequestMapping(value="/vendorViewRequest/{id}") public String
+	 * addRequest(@PathVariable int id, Model m){ User
+	 * user=requestService.getRe(id); m.addAttribute("command",user); return
+	 * "requestEditForm"; }
+	 */
+
+    @RequestMapping(value="/vendorViewRequest", method = RequestMethod.GET)
+    public String request(@ModelAttribute("user") User userRequest) {
+    	return "vendorViewRequest";
+    }
+    
+    @RequestMapping(value="/userLogIn", method = RequestMethod.POST)
+    public String viewRequest(@ModelAttribute("user") User user, Model m) {
+    	requestService.addRequest(user); 
+		return "userLogIn";
+    	
+    }
+   
+    @RequestMapping(value="/order", method = RequestMethod.GET)
+    public String placeorder(Model m) {
+    	
+    	return "order";
+    }
+    
 }

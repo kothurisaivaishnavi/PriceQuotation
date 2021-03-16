@@ -10,8 +10,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+th{
+	background-color:cyan;
+}
+</style>
 <script>
-
 function validateForm() {
   var pname = document.forms["product_form"]["productName"].value;
   if (pname == "") {
@@ -48,6 +52,11 @@ function validateForm() {
     alert("Price must be filled out");
     return false;
   }
+  var status = document.forms["product_form"]["status"].value;
+  if (status == "") {
+    alert("Status must be filled out");
+    return false;
+  }
 }
 </script>
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -55,8 +64,8 @@ function validateForm() {
  <body style="background-color: activeborder;">
 <div class="jumbotron" style="background-color: aqua;">
     <center>  <h1>Cognizant E-commerce</h1>
-      <small>A place for your daily needs</small> </center>
-       <img alt="" src="/images/priceGIF.gif" style="position:relative;">
+      <small>A place for your daily needs</small> 
+       <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-dark">Home</button>
       </form:form>
@@ -69,7 +78,7 @@ function validateForm() {
 	 <div class="col-md-8">
  
         <center><h1>Edit product details</h1></center>
-       <form:form method="POST" action="/editsave" name="product_form" onsubmit="return validateForm()" >   
+       <form:form method="POST" action="/requesteditsave" name="product_form" onsubmit="return validateForm()" >   
         <div class="form-group">  
          <form:hidden  path="id" /></div>
          <div class="form-group"> 
@@ -101,11 +110,14 @@ function validateForm() {
           <label>price<b style="color:red">*</b>:</label> 
           <form:input path="price" class="form-control" size="150" /></div>
          <div class="form-group">
+         <label>Status<b style="color:red">*</b>:</label> 
+          <form:input path="status" class="form-control" size="150" /></div>
+      
         <div class="form-group"> 
           <b style="color:red">Note: * mandatory field </b></div>
           <input type="submit" class="btn btn-success" value="Edit Save" />   
        </div>
        </form:form>
-       </div></div></div>
+       </div></div>
        </body>
        </html>

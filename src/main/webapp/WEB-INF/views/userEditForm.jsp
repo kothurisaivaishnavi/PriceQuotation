@@ -174,7 +174,7 @@ function userValidateForm() {
  		    </div>
 			<div class="container mt-3" style="text-align: center;">
                  <div class="row">
-                     <div class="col-sm-4"></div>
+                    
                      <div class="col-sm-2">
                          <button type="submit" class="btn btn-success">Edit Save</button>
                     
@@ -183,7 +183,7 @@ function userValidateForm() {
                        
              </div>
 	 
-			
+			</div>
 		</form:form> <br>
 		
 	</div>

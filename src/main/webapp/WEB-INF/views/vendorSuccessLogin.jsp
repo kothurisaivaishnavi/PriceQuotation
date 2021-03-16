@@ -40,7 +40,11 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
     </form:form><br><br>
     <form:form method="get" action="/viewproduct">
     <button type="submit" class="btn btn-success">View Product</button>
-    </form:form></center>
+    </form:form><br><br>
+    <form:form method="get" action="/vendorRequestHandler">
+    <button type="submit" class="btn btn-success">View Requests</button>
+    </form:form>
+    </center>
 </div>
 </div>
 </div>
