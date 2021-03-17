@@ -21,60 +21,46 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body style="background-color: activeborder;">
+ <body style="background-color: activeborder;">
 <div class="jumbotron" style="background-color: aqua;">
     <center>  <h1>Cognizant E-commerce</h1>
       <small>A place for your daily needs</small> <br>
        <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
-       <div class="row">
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-dark">Home</button>
-      </form:form>
-      <form:form action="/logOut" method="get">
-      <button type="submit" class="btn btn-dark" style="float: right;">Logout</button>
       </form:form>
       <form:form method="get" action="/contactUs">
       <button type="submit" class="btn btn-dark" style="float:center">Contact Us</button>
       </form:form>
+      <form:form action="/userLogOut" method="get">
+      <button type="submit" class="btn btn-dark" style="float: right;">Logout</button>
+      </form:form>
     </div>	
-    </div>
    <div class="container mt-5" >
 <div class="row">
-<div class="col-md-4 mt-5">
+<div class="col-md-3 mt-5">
 
-<img alt="logo"  src='/images/admin.jpg' style="position: absolute; padding-top: 30%" width="400" height="500">
+<img alt="logo"  src='/images/vendor.jpg' style="position: absolute; padding-top: 30%">
 </div>
 <div class="col-md-8">
-	<%
-	Class.forName("com.mysql.jdbc.Driver");
-	System.out.println("Driver Class Loaded!!!");
-	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","October@1998");
-	System.out.println("Connection Established!!!");
-	 %>
-	<center><h1>Vendor List</h1>
-	<table border="2" width="70%" cellpadding="2">  
-	<tr><th>FirstName</th><th>LastName</th><th>Gender</th><th>Contact Number</th><th>Vendor Id</th><th>Password</th><th>Address</th><th>ID</th><th>Delete</th></tr>  
-	  <%
-	ResultSet rs = con.createStatement().executeQuery("select * from vendor_table ");
-	while(rs.next())
-	{
-	%>
-	    <td><%=rs.getString(1)%></td>
-		<td><%=rs.getString(2)%></td>
-		<td><%=rs.getString(3)%></td>
-		<td><%=rs.getString(4)%></td>
-		<td><%=rs.getString(5)%></td>
-		<td><%=rs.getString(6) %></td>
-		<td><%=rs.getString(7) %></td>
-		<td><%=rs.getString(8) %></td>
-		<td><a href="deleteVendor/<%=rs.getString(8) %>">Delete</a></td>  
-		</tr>
-	<%
-	}
-	%> 
-		      
-   </table>  </center>
+ <center>
+<h1>My Orders</h1>
+<table border="2" width="70%" cellpadding="2">
+<tr><th>ProductId</th><th>ProductName</th><th>Category</th><th>Description</th><th>Color</th><th>Price</th></tr>
+   <c:forEach var="product" items="${list}">  
+   <tr>
+   <td>${product.id}</td>
+   <td>${product.productName}</td>
+   <td>${product.type}</td>
+   <td>${product.description}</td>
+   <td>${product.color}</td>
+   <td>${product.price}</td>
+   </tr>
+    </c:forEach>
+   </table><br></center>
+   <div class="container">
+   		<a href="/back" class="btn btn-success" style="float:right">Back</a>
+   </div>
 </div></div></div>
-   <br/>  
 </body>
 </html>

@@ -10,7 +10,7 @@ public interface UserService {
 	public boolean addUser(User user);
 	
 	//this method is used to fetch User data from Database(Price Quotation)
-	public List<User> read();
+	
 
 	public User getUserById(int id);
 

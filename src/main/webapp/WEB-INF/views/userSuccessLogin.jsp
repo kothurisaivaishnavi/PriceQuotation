@@ -24,7 +24,6 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
 #myInput {
   box-sizing: border-box;
-  background-image: url('searchicon.png');
   background-position: 14px 12px;
   background-repeat: no-repeat;
   font-size: 16px;
@@ -69,16 +68,19 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <a href="/viewUser" >
 <img alt="logo"  src='/images/user_profile.png' style="float: right; border-radius:50%" width="50" height="50" ></a>
     <center><h1>Cognizant E-commerce</h1>
-      <small>A place for your daily needs</small> </center>
-       <img alt="" src="/images/priceGIF.gif" style="position:relative;">
+      <small>A place for your daily needs</small> <br>
+       <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
+       <div class="row">
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-dark">Home</button>
       </form:form>
-     
+      <form:form method="get" action="/contactUs">
+      <button type="submit" class="btn btn-dark" style="float:center">Contact Us</button>
+      </form:form>
       <form:form action="/userLogOut" method="get">
       <button type="submit" class="btn btn-dark" style="float: right;">Logout</button>
       </form:form>
-      
+      </div>
     </div>	
     <div class="container mt-5" >
 <div class="row">
@@ -93,19 +95,25 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 	</h3></center>
  <br>
  <div class="row">
-<div class="col-md-8 mt-5">
-       <button onclick="myFunction()" class="dropbtn">View all Products</button>
- <div id="myDropdown" class="dropdown-content">
-    <center><input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="/userProductView">Electronics</a>
-    <a href="/userProductView">Clothes</a>
-    <a href="/userProductView">Accessories</a>
-    <a href="/userProductView">Foot Wear</a>
-    <a href="/userProductView">Fashion</a>
-    <a href="/userProductView">Groceries</a></center>
-  </div>
-</div></div>
-
+	 <div class="col-md-8 mt-5">
+		<div class="col-md-8 mt-9">
+		    <button onclick="myFunction()" class="dropbtn">View all Products</button>
+		    <div id="myDropdown" class="dropdown-content">
+			    <center><input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+			    <a href="/userProductView">Electronics</a>
+			    <a href="/userProductView">Clothes</a>
+			    <a href="/userProductView">Accessories</a>
+			    <a href="/userProductView">Foot Wear</a>
+			    <a href="/userProductView">Fashion</a>
+			    <a href="/userProductView">Groceries</a></center>
+		     </div>
+		 </div>
+		 <div class="col-md-8 mt-5">
+		  	<a href="/myOrders" class="btn btn-info">My Orders</a>
+		 </div>
+	 </div>
+</div>
+</div>
 <script>
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */

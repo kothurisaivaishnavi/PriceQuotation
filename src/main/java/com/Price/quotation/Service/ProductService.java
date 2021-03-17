@@ -65,4 +65,20 @@ public class ProductService {
 	        }    
 	    });    
 	}    
+	public List<Product> getOrder(){
+		return jdbcTemplate.query("select *from product_table where status='yes'", new RowMapper<Product>() {
+			public Product mapRow(ResultSet rs, int row) throws SQLException{
+				Product pro=new Product();
+				pro.setId(rs.getInt(1));
+	            pro.setProductName(rs.getString(2));    
+	            pro.setType(rs.getString(3));    
+	            pro.setDescription(rs.getString(4));    
+	            pro.setAvailability(rs.getString(5));  
+	            pro.setColor(rs.getString(6));
+	            pro.setQuantity(rs.getInt(7));
+	            pro.setPrice(rs.getInt(8));
+	            return pro;
+			}
+		});
+	}
 }   

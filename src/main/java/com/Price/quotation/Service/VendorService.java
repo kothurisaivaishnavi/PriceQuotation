@@ -10,7 +10,7 @@ import com.Price.quotation.Model.Vendor;
 public interface VendorService {
     //this method is used for to add vendor data in Database(Price Quotation)
     public boolean addVendor(Vendor vendor);
-    
+    public List<Vendor> getVendor();
     //this method is used to fetch Vendor data from Database(Price Quotation)
     public List<Vendor> read();
 	public int delete(int vId);

@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -12,36 +11,28 @@
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 <body style="background-color: activeborder;">
+ 
 <div class="jumbotron" style="background-color: aqua;">
-    <center>  <h1>Cognizant E-commerce</h1>
+    <center><h1>Cognizant E-commerce</h1>
       <small>A place for your daily needs</small> <br>
        <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
        <div class="row">
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-dark">Home</button>
       </form:form>
-      <form:form action="/logOut" method="get">
+      <form:form method="get" action="/contactUs">
+      <button type="submit" class="btn btn-dark" style="float:center">Contact Us</button>
+      </form:form>
+      <form:form action="/userLogOut" method="get">
       <button type="submit" class="btn btn-dark" style="float: right;">Logout</button>
       </form:form>
-      <center><form:form method="get" action="/contactUs">
-      <button type="submit" class="btn btn-dark" >Contact Us</button>
-      </form:form></center>
-    </div>	</div>
-    <div class="container mt-5" >
-<div class="row">
-<div class="col-md-4 mt-5">
-
-<img alt="logo"  src='/images/admin.jpg'/ style="position: absolute; padding-top: 30%" width="400" height="500">
-</div>
-<div class="col-md-8">
-<center>
-	<h3>
-		Welcome admin <h2 style="color: red;">${userId} </h2> 
-	</h3>
-	<br><br>
-     <form:form method="get" action="/vendorList">
-      <button type="submit" class="btn btn-info">View Vendor List</button>
-      </form:form>
- </center></div></div></div>
+      </div>
+    </div>	
+    <div class="form-group">
+	<center><h2 style="font-family: cursive; color:fuchsia; ">Thank You For Your Valuable Feedback</h2><br>
+	<h5>Visit Us again!!!!</h5>
+	<img alt="" src="/images/thanks.gif" style="position:relative;">
+	</center>
+	</div>
 </body>
 </html>

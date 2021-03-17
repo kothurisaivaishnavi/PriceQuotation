@@ -63,5 +63,9 @@ public class AdminController {
 	public String viewVendor(@ModelAttribute("admin") Admin adminSignIn) {
 		return "vendorList";
 	}
-	        
+
+	@RequestMapping(value = "/contactUs", method = RequestMethod.GET)
+	public String contactUs(@ModelAttribute("admin") Admin adminSignIn) {
+		return "contactUs";
+	}        
 }

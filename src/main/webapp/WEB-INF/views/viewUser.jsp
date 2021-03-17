@@ -21,17 +21,23 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
-    <div class="jumbotron" style="background-color: bisque;">
-         <center>  <h1>Cognizant E-commerce</h1>
-      <small>A place for your daily needs</small> </center>
+  <body style="background-color: activeborder;">
+<div class="jumbotron" style="background-color: aqua;">
+    <center>  <h1>Cognizant E-commerce</h1>
+      <small>A place for your daily needs</small> <br>
+       <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
+       <div class="row">
       <form:form method="get" action="/index">
-      <button type="submit" class="btn btn-info">Home</button>
+      <button type="submit" class="btn btn-dark">Home</button>
       </form:form>
-      <form:form action="/logOut" method="get">
-      <button type="submit" class="btn btn-info" style="float: right;">Logout</button>
+      <form:form action="/userLogOut" method="get">
+      <button type="submit" class="btn btn-dark" style="float: right;">Logout</button>
+      </form:form>
+      <form:form method="get" action="/contactUs">
+      <button type="submit" class="btn btn-dark" style="float:center">Contact Us</button>
       </form:form>
     </div>	
+    </div>
    <div class="container mt-5" >
 <div class="row">
 <div class="col-md-3 mt-5">

@@ -60,7 +60,7 @@ public class UserController {
         }
         
         
-        List<User> userList = userService.read();
+        List<User> userList = userService.getUser();
         for(User user1 : userList)
         {
             if(user1.getUserId().equals(user.getUserId()) && user1.getPassword().equals(user.getPassword()))
@@ -105,4 +105,23 @@ public class UserController {
         m.addAttribute("list",list);  
         return "userProductView";    
     }  
+    @RequestMapping("/back")
+    public String back(Model m) {
+    	return "userSuccessLogin";
+    }
+    @RequestMapping("/myOrders")
+    public String myOrders(Model m) {
+    	List<Product> list=productservice.getOrder();
+    	m.addAttribute("list", list);
+    	return "myOrders";
+    }
+    @RequestMapping("/feedback")
+    public String feedback(Model m) {
+    	return "feedback";
+    }
+    @RequestMapping("/finalPage")
+    public String finalPage(Model m) {
+    	return "finalPage";
+    }
+   
 }

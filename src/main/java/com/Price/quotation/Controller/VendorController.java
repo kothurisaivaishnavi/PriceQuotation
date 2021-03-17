@@ -17,6 +17,7 @@ import com.Price.quotation.Model.User;
 import com.Price.quotation.Model.Vendor;
 import com.Price.quotation.Service.ProductService;
 import com.Price.quotation.Service.RequestService;
+import com.Price.quotation.Service.UserService;
 import com.Price.quotation.Service.VendorService;
 
 @Controller
@@ -28,6 +29,7 @@ public class VendorController {
 	ProductService productService;
 	@Autowired
 	RequestService requestService;
+	
 	@RequestMapping(value = "/vendor", method = RequestMethod.GET)
 	public String VendorFront(@ModelAttribute("vendor") Vendor vendorView) {
 		return "vendor";
@@ -59,7 +61,7 @@ public class VendorController {
         }
         
         
-        List<Vendor>vendorList = vendorService.read();
+        List<Vendor>vendorList = vendorService.getVendor();
         for(Vendor vendor1 : vendorList)
         {
             if(vendor1.getVendorId().equals(vendor.getVendorId()) && vendor1.getPassword().equals(vendor.getPassword()))
@@ -112,12 +114,6 @@ public class VendorController {
     	return "vendorRequestHandler";
     }
 
-	/*
-	 * @RequestMapping(value="/vendorViewRequest/{id}") public String
-	 * addRequest(@PathVariable int id, Model m){ User
-	 * user=requestService.getRe(id); m.addAttribute("command",user); return
-	 * "requestEditForm"; }
-	 */
 
     @RequestMapping(value="/vendorViewRequest", method = RequestMethod.GET)
     public String request(@ModelAttribute("user") User userRequest) {
@@ -133,8 +129,16 @@ public class VendorController {
    
     @RequestMapping(value="/order", method = RequestMethod.GET)
     public String placeorder(Model m) {
-    	
+    	List<User> list=requestService.viewRequest();
+    	m.addAttribute("list",list);
     	return "order";
+    }
+
+    @RequestMapping(value="/bill", method = RequestMethod.GET)
+    public String bill(Model m) {
+    	List<Vendor> list=vendorService.read();    
+        m.addAttribute("list",list); 
+    	return "bill";
     }
     
 }

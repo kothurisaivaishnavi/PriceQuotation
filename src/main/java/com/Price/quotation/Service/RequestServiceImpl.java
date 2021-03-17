@@ -34,7 +34,7 @@ public class RequestServiceImpl implements RequestService{
 	}
 	@Override
 	public List<User> viewRequest() {
-		List<User> reqList = jdbcTemplate.query("select * from request_form", new RowMapper<User>() {
+		List<User> reqList = jdbcTemplate.query("select * from request_form r inner join product_table p on r.productId=p.id", new RowMapper<User>() {
         	
             @Override
             public User mapRow(ResultSet set, int rowNum) throws SQLException {
@@ -42,6 +42,8 @@ public class RequestServiceImpl implements RequestService{
                 user.setRequestId(set.getString("requestId"));
                 user.setPriceQuotation(set.getString("priceQuotation"));
                 user.setProductId(set.getInt("productId"));
+                user.setProductName(set.getString("productName"));
+                user.setProductPrice(set.getInt("price"));
                 return user;
             }
         });

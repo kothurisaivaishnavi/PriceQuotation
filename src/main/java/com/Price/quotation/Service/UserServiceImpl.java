@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.Price.quotation.Model.Product;
 import com.Price.quotation.Model.User;
@@ -45,19 +46,6 @@ public class UserServiceImpl implements UserService {
 
 	// -----------------------------------------------
 	@Override
-	public List<User> read() {
-		List<User> userList = jdbcTemplate.query("select * from user_table", new RowMapper<User>() {
-
-			@Override
-			public User mapRow(ResultSet set, int rowNum) throws SQLException {
-				User user = new User();
-				user.setUserId(set.getString("userId"));
-				user.setPassword(set.getString("password"));
-				return user;
-			}
-		});
-		return userList;
-	}
 	public List<User> getUser(){    
 	    return jdbcTemplate.query("select * from user_table",new RowMapper<User>(){    
 	        public User mapRow(ResultSet rs, int row) throws SQLException {  
@@ -76,6 +64,7 @@ public class UserServiceImpl implements UserService {
 	    });    
 	}    
 	@Override
+	@ExceptionHandler(SQLException.class)
 	public User getUserById(int id) {
 		
 		String sql="select * from user_table where id=?";    

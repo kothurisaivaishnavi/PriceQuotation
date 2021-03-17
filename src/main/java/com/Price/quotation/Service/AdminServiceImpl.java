@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.Price.quotation.Model.Admin;
 
@@ -32,6 +33,7 @@ public  class AdminServiceImpl implements AdminService {
 
 	
 	@Override
+	@ExceptionHandler({ClassNotFoundException.class,SQLException.class})
 	public List<Admin> read() {
 		List<Admin> RegisterList = jdbcTemplate.query("SELECT * FROM ADMIN", new RowMapper<Admin>() {
 

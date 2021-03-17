@@ -22,43 +22,37 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
        <form:form method="get" action="/contactUs">
       <button type="submit" class="btn btn-dark" style="float:center">Contact Us</button>
       </form:form>
-      <form:form action="/userLogOut" method="get">
-      <button type="submit" class="btn btn-dark" style="float: right;">Logout</button>
-      </form:form>
-    </div>  
-    </div>	
+    </div>	</div>
     <div class="container mt-5" >
-<div class="row">
-<div class="col-md-4 mt-5">
-
-<img alt="logo"  src='/images/user.png' style="position: absolute; padding-top: 30%">
-</div>
-<div class="col-md-8">
-<center>
-	<h3>
-		Welcome <h2 style="color: red;">${name} </h2> 
-	</h3>
- 	<table border="2" width="70%" cellpadding="2">
-<tr><th>Id</th><th>productName</th><th>type</th><th>description</th>
-<th>availability</th><th>color</th><th>quantity</th><th>price</th><th>Status</th><th>Request</th><th>PlaceOrder</th></tr>
-   <c:forEach var="product" items="${list}">  
-   <tr>
-   <td>${product.id}</td>
-   <td>${product.productName}</td>
-   <td>${product.type}</td>
-   <td>${product.description}</td>
-   <td>${product.availability}</td>
-   <td>${product.color}</td>
-   <td>${product.quantity}</td>
-   <td>${product.price}</td>
-   <td>${product.status}</td>
-   <td><a href="/vendorViewRequest" class="btn btn-info">Send Request</a></td>
-   <td><a href="/order" class="btn btn-info">Buy</a>
-   </tr>
-   </c:forEach>
-   </table>
-	<marquee style="color: red">* You can't buy the product at your choice until status is "YES"</marquee><br>
-	 
-</center></div></div></div>
+    <div class="row">
+	<div class="col-md-4 mt-5">
+	
+	<img alt="logo"  src='/images/bill.gif' style="position: absolute; padding-top: 30%" width="400" height="400">
+	</div>
+	<div class="col-md-8">
+		<center><h1>Cognizant E-Commerce</h1>
+		<small>A place for your daily needs</small>
+		<h4 style="color:Blue"><i>Billing Details</i></h4></center>
+		<hr>
+		<c:forEach var="vendor" items="${list}">
+		<b><h5><i>Product Details:</i></h5></b><br>
+		<b>Product Name: </b><h6>${vendor.productName}</h6><br>
+		<b>Product ID: </b><h6>${vendor.productId }</h6><br>
+		<b>Product Cost: </b><h6>${vendor.productPrice }</h6><br><hr><br>
+		<b><i><h5>Vendor Details:</h5></i></b><br>
+		<b>ID: </b><h6>${vendor.vendorId }</h6><br>
+		<b>Name: </b><h6>${vendor.firstName }</h6><br>
+		<b>Contact Number: </b><h6>${vendor.contactNumber }</h6><br>
+		<b>Address: </b><h6>${vendor.address }</h6><br><hr><br>
+		<b><h5><i>Shipment Details:</i></h5></b><br>
+		<b>Name: </b><h6>${vendor.userName }</h6><br>
+		<b>Address: </b><h6>${vendor.userAddress }</h6><br>
+		<b>Contact Number: </b><h6>${vendor.userContact }</h6>
+		</c:forEach><br>
+		<a href="/feedback" class="btn btn-info" style="float: right;">Feedback</a>
+	</div>
+	</div>
+	</div>
+		
 </body>
 </html>

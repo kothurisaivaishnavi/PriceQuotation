@@ -14,13 +14,17 @@
     <div class="jumbotron" style="background-color: aqua;">
     <center>
     <h3>COGNIZANT E-COMMERCE</h3>
-    <small>A place for your daily needs</small> </center>
-    <img alt="" src="/images/priceGIF.gif" style="position:relative;">
+    <small>A place for your daily needs</small> <br>
+    <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
       </center>
+      <div class="row">
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-dark">Home</button>
       </form:form>
-    </div>	
+      <form:form method="get" action="/contactUs">
+      <button type="submit" class="btn btn-dark" >Contact Us</button>
+      </form:form>
+    </div>	</div>
 
 <div class="container mt-5" >
 <div class="row">

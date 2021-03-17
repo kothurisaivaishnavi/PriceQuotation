@@ -41,20 +41,40 @@ public class VendorServiceImpl implements VendorService {
     // -----------------------------------------------
     @Override
     public List<Vendor> read() {
-        List<Vendor> vendorList = jdbcTemplate.query("select * from vendor_table", new RowMapper<Vendor>() {
+        List<Vendor> vendorList = jdbcTemplate.query("select * from vendor_table v inner join product_table p on v.vId=p.id inner join user_table u on v.vId=u.id", new RowMapper<Vendor>() {
+        	
+            @Override
+            public Vendor mapRow(ResultSet set, int rowNum) throws SQLException {
+                Vendor vendor = new Vendor();
+                vendor.setVendorId(set.getString("vendorId"));
+                vendor.setFirstName(set.getString(1));
+                vendor.setAddress(set.getString(7));
+                vendor.setContactNumber(set.getString(4));
+                vendor.setUserName(set.getString(18));
+                vendor.setUserContact(set.getString(22));
+                vendor.setUserAddress(set.getString(25));
+                vendor.setProductId(set.getInt(9));
+                vendor.setProductName(set.getString(10));
+                vendor.setProductPrice(set.getInt(16));
+                return vendor;
+            }
+        });
+        return vendorList;
+    }     
+    @Override
+    public List<Vendor> getVendor() {
+        List<Vendor> vendorList = jdbcTemplate.query("select * from vendor_table ", new RowMapper<Vendor>() {
         	
             @Override
             public Vendor mapRow(ResultSet set, int rowNum) throws SQLException {
                 Vendor vendor = new Vendor();
                 vendor.setVendorId(set.getString("vendorId"));
                 vendor.setPassword(set.getString("password"));
-                
                 return vendor;
             }
         });
         return vendorList;
     }     
-
     public int delete(int vId){    
         String sql="delete from vendor_table where vId="+vId+"";    
         return jdbcTemplate.update(sql);    

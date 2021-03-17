@@ -104,19 +104,21 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
     <div class="jumbotron" style="background-color: aqua;">
     <center>
     <h3>COGNIZANT E-COMMERCE</h3>
-    <small>A place for your daily needs</small> </center>
+    <small>A place for your daily needs</small> <br>
     <img alt="" src="/images/priceGIF.gif" style="position:relative;">
       </center>
+      <div class="row">
      
-    </div>
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-dark">Home</button>
       </form:form>
-     
+       <form:form method="get" action="/contactUs">
+      <button type="submit" class="btn btn-dark" style="float:center">Contact Us</button>
+      </form:form>
       <form:form action="/userLogOut" method="get">
       <button type="submit" class="btn btn-dark" style="float: right;">Logout</button>
       </form:form>
-      
+      </div>
     </div>	
    <div class="container-fluid mt-5">
    <h2 class="mb-5 text-center">Shopping Cart</h2>
@@ -124,9 +126,9 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
       <div class="col-md-8">
          <div class="table-responsive">
             <table id="myTable" class="table">
+           
                <thead>
                   <tr>
-                   
                      <th>Name</th>
                      <th>Qty</th>
                      <th>Price</th>
@@ -136,10 +138,11 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
                   </tr>
                </thead>
                <tbody>
+                <c:forEach var="user" items="${list}">
                   <tr>
                      
                      <td>
-                        <p>Lenovo</p>
+                        <p>${user.productName}</p>
                      </td>
                      <td>
                         <div class="button-container">
@@ -149,77 +152,14 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
                         </div>
                      </td>
                      <td>
-                        <input type="text" value="4500" class="price form-control" disabled>
+                        <input type="text" value="${user.productPrice}" class="price form-control" disabled>
                      </td>
                      <td align="right">Rs. <span id="amount" class="amount">0</span>
                      </td>
                   </tr>
-                 <!--  <tr>
+                 </c:forEach>
    
-    <td>
-      <p>Product Two</p>
-   </td>
-   <td>
-      <div class="button-container">
-         <button class="cart-qty-plus" type="button" value="+">+</button>
-         <input type="text" name="qty" min="0" class="qty form-control" value="0"/>
-         <button class="cart-qty-minus" type="button" value="-">-</button>
-      </div>
-   </td>
-   <td>
-      <input type="text" value="125" class="price form-control" disabled>
-   </td>
-   <td align="right">$ <span id="amount" class="amount">0</span>
-   </td>
-</tr>
-<tr>
-   <td>
-      <div class="product-img">
-         <div class="img-prdct">
-            
-         </div>
-      </div>
-   </td>
-   <td>
-      <p>Product Three</p>
-   </td>
-   <td>
-      <div class="button-container">
-         <button class="cart-qty-plus" type="button" value="+">+</button>
-         <input type="text" name="qty" min="0" class="qty form-control" value="0"/>
-         <button class="cart-qty-minus" type="button" value="-">-</button>
-      </div>
-   </td>
-   <td>
-      <input type="text" value="250" class="price form-control" disabled>
-   </td>
-   <td align="right">$ <span id="amount" class="amount">0</span>
-   </td>
-</tr>
-<tr>
-   <td>
-      <div class="product-img">
-         <div class="img-prdct">
-            <img src="2.jpg">
-         </div>
-      </div>
-   </td>
-   <td>
-      <p>Product Four</p>
-   </td>
-   <td>
-      <div class="button-container">
-         <button class="cart-qty-plus" type="button" value="+">+</button>
-         <input type="text" name="qty" min="0" class="qty form-control" value="0"/>
-         <button class="cart-qty-minus" type="button" value="-">-</button>
-      </div>
-   </td>
-   <td>
-      <input type="text" value="300" class="price form-control" disabled>
-   </td>
-   <td align="right">$ <span id="amount" class="amount">0</span>
-   </td> 
-</tr>-->
+    
                </tbody>
                <tfoot>
                   <tr>
@@ -231,10 +171,39 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
                   </tr>
                </tfoot>
             </table>
+            <form action="/bill">
+            <div class="form-group">
+            <label>Select the payment mode<b style="color:red">*</b></label><br>
+            <select id="card" name="card" class="form-control">
+            <option value="debit">Debit Card</option>
+            <option value="credit">Credit card</option>
+            </select>
+            </div>
+            <div class="form-group">
+            <label>Enter your name on selected card<b style="color:red">*</b>:</label>
+            <input type="text" name="cardName" id="cardName" class="form-control" size="150">
+            </div>
+            <div class="form-group">
+            <label>Enter your card number<b style="color:red">*</b>:</label>
+            <input type="text" name="cardNumber" id="cardNumber" class="form-control" size="150">
+            </div>
+            <div class="form-group">
+            <label>Enter your expiry(MM/yyyy)<b style="color:red">*</b>:</label>
+            <input type="text" name="cardExpiry" id="cardExpiry" class="form-control" size="150" placeholder="MM/yyyy">
+            </div>
+            <div class="form-group">
+            <label>Enter cvv<b style="color:red">*</b>:</label>
+            <input type="text" name="cardCvv" id="cardCvv" class="form-control" size="150" placeholder="cvv">
+            </div>
+            <div class="form-group">
+            <input type="submit" class="btn btn-dark" style="float:right" value="Buy Now">
+            </div>
+            </form>
          </div>
       </div>
    </div>
 </div>
+
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script>
@@ -281,3 +250,5 @@ var decrementQty = minusBtn.click(function() {
 </script>
    </body>
 </html>
+           
+      
