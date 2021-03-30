@@ -26,6 +26,7 @@
     <center>  <h1>Cognizant E-commerce</h1>
       <small>A place for your daily needs</small> <br>
        <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
+       <div class="row">
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-dark">Home</button>
       </form:form>
@@ -35,6 +36,7 @@
       <form:form action="/userLogOut" method="get">
       <button type="submit" class="btn btn-dark" style="float: right;">Logout</button>
       </form:form>
+      </div>
     </div>	
    <div class="container mt-5" >
 <div class="row">

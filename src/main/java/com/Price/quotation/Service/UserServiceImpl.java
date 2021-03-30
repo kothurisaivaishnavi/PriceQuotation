@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	// --------------------------------------------------------
+	@ExceptionHandler(SQLException.class)
 	public boolean addUser(User register) {
 		
 		
@@ -46,6 +47,7 @@ public class UserServiceImpl implements UserService {
 
 	// -----------------------------------------------
 	@Override
+	@ExceptionHandler(SQLException.class)
 	public List<User> getUser(){    
 	    return jdbcTemplate.query("select * from user_table",new RowMapper<User>(){    
 	        public User mapRow(ResultSet rs, int row) throws SQLException {  
@@ -71,6 +73,7 @@ public class UserServiceImpl implements UserService {
 	    return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<User>(User.class)); 
 	}																																																						
 	@Override
+	@ExceptionHandler(SQLException.class)
 	public int update(User p) {
 		String sql="update user_table set firstName='"+p.getFirstName()+"',lastName='"+p.getLastName()+"',dateOfBirth='"+p.getDateOfBirth()+"',gender='"+p.getGender()+"',contact_number='"+p.getContactNumber()+"',userId='"+p.getUserId()+"',password='"+p.getPassword()+"',address='"+p.getAddress()+"' where id="+p.getId()+""; 
 	    return jdbcTemplate.update(sql);  

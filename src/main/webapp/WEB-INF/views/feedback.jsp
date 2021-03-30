@@ -45,15 +45,16 @@ label.star:before {
 <div class="jumbotron" style="background-color: aqua;">
     <center>  <h1>Cognizant E-commerce</h1>
       <small>A place for your daily needs</small> <br>
+      
+      <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
       <div class="row">
-       <img alt="" src="/images/priceGIF.gif" style="position:relative;"></center>
       <form:form method="get" action="/index">
       <button type="submit" class="btn btn-dark">Home</button>
       </form:form>
       <form:form method="get" action="/contactUs">
       <button type="submit" class="btn btn-dark" style="float:center">Contact Us</button>
       </form:form>
-    </div>	
+	  </div>    
 </div>
 <div class="container mt-5" >
 <div class="row">

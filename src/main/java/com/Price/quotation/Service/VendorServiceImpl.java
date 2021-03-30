@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.Price.quotation.Model.User;
 import com.Price.quotation.Model.Vendor;
 
 
@@ -22,6 +22,7 @@ public class VendorServiceImpl implements VendorService {
         this.jdbcTemplate = jdbcTemplate;
     }
     // --------------------------------------------------------
+    @ExceptionHandler(SQLException.class)
     public boolean addVendor(Vendor register) {
         String sql = "insert into vendor_table(firstName,lastName,gender,contact_number,vendorId,password,address) values(?,?,?,?,?,?,?)";
             
@@ -40,6 +41,7 @@ public class VendorServiceImpl implements VendorService {
     
     // -----------------------------------------------
     @Override
+    @ExceptionHandler(SQLException.class)
     public List<Vendor> read() {
         List<Vendor> vendorList = jdbcTemplate.query("select * from vendor_table v inner join product_table p on v.vId=p.id inner join user_table u on v.vId=u.id", new RowMapper<Vendor>() {
         	
@@ -62,6 +64,7 @@ public class VendorServiceImpl implements VendorService {
         return vendorList;
     }     
     @Override
+    @ExceptionHandler(SQLException.class)
     public List<Vendor> getVendor() {
         List<Vendor> vendorList = jdbcTemplate.query("select * from vendor_table ", new RowMapper<Vendor>() {
         	
@@ -75,6 +78,7 @@ public class VendorServiceImpl implements VendorService {
         });
         return vendorList;
     }     
+    @ExceptionHandler(SQLException.class)
     public int delete(int vId){    
         String sql="delete from vendor_table where vId="+vId+"";    
         return jdbcTemplate.update(sql);    

@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;    
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import com.Price.quotation.Model.Product;
 
 @Service("productService")  
@@ -22,7 +24,7 @@ public class ProductService {
     }
     
     //--------------------------------------------------------
-
+    @ExceptionHandler(SQLException.class)
 	public boolean save(Product pro){    
 	    String sql="insert into product_table(productName,type,description,availability,color,quantity,price) values(?,?,?,?,?,?,?)"; 
 	    try {
@@ -36,18 +38,22 @@ public class ProductService {
 	        return false;
 	    }
 	}    
+    @ExceptionHandler(SQLException.class)
 	public int update(Product p){    
 	    String sql="update product_table set productName='"+p.getProductName()+"',type='"+p.getType()+"',description='"+p.getDescription()+"',availability='"+p.getAvailability()+"',color='"+p.getColor()+"',quantity='"+p.getQuantity()+"',price='"+p.getPrice()+"',status='"+p.getStatus()+"' where id="+p.getId()+""; 
 	    return jdbcTemplate.update(sql);    
-	}    
+	}   
+    @ExceptionHandler(SQLException.class)
 	public int delete(int id){    
 	    String sql="delete from product_table where id="+id+"";    
 	    return jdbcTemplate.update(sql);    
 	}    
+    @ExceptionHandler(SQLException.class)
 	public Product getProductById(int id){    
 	    String sql="select * from product_table where id=?";    
 	    return jdbcTemplate.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Product>(Product.class));    
-	}    
+	}   
+    @ExceptionHandler(SQLException.class)
 	public List<Product> getProduct(){    
 	    return jdbcTemplate.query("select * from product_table",new RowMapper<Product>(){    
 	        public Product mapRow(ResultSet rs, int row) throws SQLException {    
@@ -65,6 +71,7 @@ public class ProductService {
 	        }    
 	    });    
 	}    
+    @ExceptionHandler(SQLException.class)
 	public List<Product> getOrder(){
 		return jdbcTemplate.query("select *from product_table where status='yes'", new RowMapper<Product>() {
 			public Product mapRow(ResultSet rs, int row) throws SQLException{

@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.Price.quotation.Model.Product;
 import com.Price.quotation.Model.User;
@@ -18,7 +19,8 @@ public class RequestServiceImpl implements RequestService{
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-	public boolean addRequest(User req) {	
+    @ExceptionHandler(SQLException.class)
+    public boolean addRequest(User req) {	
 		String sql = "insert into request_form(priceQuotation,productId) values(?,?)";
 			
 		 try {
@@ -33,6 +35,7 @@ public class RequestServiceImpl implements RequestService{
 		}
 	}
 	@Override
+	@ExceptionHandler(SQLException.class)
 	public List<User> viewRequest() {
 		List<User> reqList = jdbcTemplate.query("select * from request_form r inner join product_table p on r.productId=p.id", new RowMapper<User>() {
         	
@@ -51,6 +54,7 @@ public class RequestServiceImpl implements RequestService{
 	}
 	
 	@Override
+	@ExceptionHandler(SQLException.class)
 	public int update(User user){    
 	    String sql="update request_form set priceQuotation='"+user.getPriceQuotation()+"',productId='"+user.getProductId()+"' where requestId="+user.getRequestId()+""; 
 	    return jdbcTemplate.update(sql);    

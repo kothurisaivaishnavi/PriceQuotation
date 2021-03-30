@@ -65,7 +65,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <body style="background-color: activeborder;">
  
 <div class="jumbotron" style="background-color: aqua;">
-<a href="/viewUser" >
+<a href="/viewUser">
 <img alt="logo"  src='/images/user_profile.png' style="float: right; border-radius:50%" width="50" height="50" ></a>
     <center><h1>Cognizant E-commerce</h1>
       <small>A place for your daily needs</small> <br>
